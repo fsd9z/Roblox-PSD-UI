@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Check out the repository
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Set up Roblox Foreman
+    - name: Set up Foreman
+      uses: Roblox/setup-foreman@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
+    # Add additional steps here
+    - name: Run some task
+      run: |
+        echo "Running some tasks"
