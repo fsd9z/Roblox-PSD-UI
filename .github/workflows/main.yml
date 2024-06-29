@@ -19,7 +19,19 @@ jobs:
       uses: Roblox/setup-foreman@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        
+
+    # Verify Foreman installation
+    - name: Verify Foreman installation
+      run: .foreman-install/foreman --version
+
+    # List directory contents to check for Foreman files
+    - name: List directory contents
+      run: ls -la
+
+    # Run Foreman to install tools as per foreman.toml
+    - name: Install tools with Foreman
+      run: .foreman-install/foreman install
+
     # Add additional steps here
     - name: Run some task
       run: |
